@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FatherModule } from './father/father.module';
+import { ChildModule } from './child/child.module';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { FatherModule } from './father/father.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: (process.env.DB_SYNCHRONIZE === 'true'),
     }),  
-    FatherModule
+    FatherModule, ChildModule
   ],
   controllers: [AppController],
   providers: [AppService],
