@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Father } from 'src/father/entities/father.entity';
 import { Repository } from 'typeorm';
 import { CreateChildDto } from './dto/create-child.dto';
 import { UpdateChildDto } from './dto/update-child.dto';
@@ -7,11 +8,29 @@ import { Child } from './entities/child.entity';
 
 @Injectable()
 export class ChildService {
-  constructor(@InjectRepository(Child) private readonly repository: Repository<Child>) {}
+  constructor(
+    @InjectRepository(Child) 
+    private readonly repository: Repository<Child>,
+    @InjectRepository(Father) private readonly fatherDto: Repository<Father>
+  ) {}
 
-  create(createChildDto: CreateChildDto): Promise <Child> {
-    const child = this.repository.create(createChildDto);
-    return this.repository.save(child);
+  async create(createChildDto: CreateChildDto): Promise <Child> {
+    const fatherId = createChildDto.father_id;
+    
+    const father = await this.fatherDto.findOne(fatherId);
+
+    if (!father) {
+      throw new NotFoundException('Father not found');
+    }
+
+    console.log(createChildDto);
+    
+    let child = this.repository.create(createChildDto);
+    child.father = father;
+
+    child = await this.repository.save(child);
+
+    return child;
   }
 
   findAll(): Promise<Child[]> {
@@ -38,4 +57,5 @@ export class ChildService {
     const child = await this.findOne(id);
     return this.repository.remove(child);
   }
+  
 }

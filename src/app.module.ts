@@ -16,7 +16,7 @@ import { ChildModule } from './child/child.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      entities: [__dirname + '/**/*.entity{.ts,.js}', 'src/entity/*.ts', './build/src/entity/*.js'],
       synchronize: (process.env.DB_SYNCHRONIZE === 'true'),
     }),  
     FatherModule, ChildModule

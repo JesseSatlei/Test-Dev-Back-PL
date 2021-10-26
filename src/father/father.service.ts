@@ -23,6 +23,17 @@ export class FatherService {
     return this.repository.findOne(id);
   }
 
+  fildAllFathersAndChildrens(): Promise<Father[]> {
+    return this.repository.find({ relations: ['child'] });
+  }
+
+  findAllChildrens(id: string): Promise<Father> {
+    return this.repository.findOne(id, {
+      relations: ['child'] 
+    });
+  }
+
+
   async update(id: string, updateFatherDto: UpdateFatherDto): Promise<Father> {
     
     const father = await this.repository.findOneOrFail(id);

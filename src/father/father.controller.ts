@@ -17,6 +17,16 @@ export class FatherController {
     return this.fatherService.findAll();
   }
 
+  @Get('/children')
+  findAllFathersAndChildrens() {
+    return this.fatherService.fildAllFathersAndChildrens();
+  }
+
+  @Get('/children/:id')
+  findAllChildrens(@Param('id') id: string) {
+    return this.fatherService.findAllChildrens(id);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.fatherService.findOne(id);
@@ -31,4 +41,6 @@ export class FatherController {
   remove(@Param('id') id: string) {
     return this.fatherService.remove(id);
   }
+
+
 }

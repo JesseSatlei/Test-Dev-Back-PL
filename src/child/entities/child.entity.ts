@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Father } from "src/father/entities/father.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Child {
@@ -8,6 +9,8 @@ export class Child {
     @Column({ name: 'name', type: 'varchar', length: 50 })
     name: string;
 
-    @Column()
-    father_id: number;
+    @ManyToOne(type => Father, father => father.child, {
+        onDelete: "CASCADE"
+    })
+    father: Father;
 }
