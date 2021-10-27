@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { FatherModule } from './father/father.module';
 import { ChildModule } from './child/child.module';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { UsersModule } from './users/users.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}', 'src/entity/*.ts', './build/src/entity/*.js'],
       synchronize: (process.env.DB_SYNCHRONIZE === 'true'),
     }),  
-    FatherModule, ChildModule, UsersModule
+    FatherModule, ChildModule, UsersModule, AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
