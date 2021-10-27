@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FatherModule } from './father/father.module';
 import { ChildModule } from './child/child.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { ChildModule } from './child/child.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}', 'src/entity/*.ts', './build/src/entity/*.js'],
       synchronize: (process.env.DB_SYNCHRONIZE === 'true'),
     }),  
-    FatherModule, ChildModule
+    FatherModule, ChildModule, UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],
