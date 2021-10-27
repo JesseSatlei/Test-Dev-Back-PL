@@ -8,38 +8,38 @@ export class FatherController {
   constructor(private readonly fatherService: FatherService) {}
 
   @Post()
-  create(@Body() createFatherDto: CreateFatherDto) {
-    return this.fatherService.create(createFatherDto);
+  async create(@Body() createFatherDto: CreateFatherDto) {
+    return await this.fatherService.create(createFatherDto);
   }
 
   @Get()
-  findAll() {
-    return this.fatherService.findAll();
+  async findAll() {
+    return await this.fatherService.findAll();
   }
 
   @Get('/children')
-  findAllFathersAndChildrens() {
-    return this.fatherService.fildAllFathersAndChildrens();
+  async findAllFathersAndChildrens() {
+    return await this.fatherService.fildAllFathersAndChildrens();
   }
 
   @Get('/children/:id')
-  findAllChildrens(@Param('id') id: string) {
-    return this.fatherService.findAllChildrens(id);
+  async findAllChildrens(@Param('id') id: string) {
+    return await this.fatherService.findAllChildrens(id);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.fatherService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    return await this.fatherService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFatherDto: UpdateFatherDto) {
-    return this.fatherService.update(id, updateFatherDto);
+  async update(@Param('id') id: string, @Body() updateFatherDto: UpdateFatherDto) {
+    return await this.fatherService.update(id, updateFatherDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.fatherService.remove(id);
+  async remove(@Param('id') id: string) {
+    return await this.fatherService.remove(id);
   }
 
 

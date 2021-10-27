@@ -8,27 +8,27 @@ export class ChildController {
   constructor(private readonly childService: ChildService) {}
 
   @Post()
-  create(@Body() createChildDto: CreateChildDto) {
-    return this.childService.create(createChildDto);
+  async create(@Body() createChildDto: CreateChildDto) {
+    return await this.childService.create(createChildDto);
   }
 
   @Get()
-  findAll() {
-    return this.childService.findAll();
+  async findAll() {
+    return await this.childService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.childService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    return await this.childService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateChildDto: UpdateChildDto) {
-    return this.childService.update(id, updateChildDto);
+  async update(@Param('id') id: string, @Body() updateChildDto: UpdateChildDto) {
+    return await this.childService.update(id, updateChildDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.childService.remove(id);
+  async remove(@Param('id') id: string) {
+    return await this.childService.remove(id);
   }
 }

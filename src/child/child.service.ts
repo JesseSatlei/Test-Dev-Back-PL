@@ -22,8 +22,6 @@ export class ChildService {
     if (!father) {
       throw new NotFoundException('Father not found');
     }
-
-    console.log(createChildDto);
     
     let child = this.repository.create(createChildDto);
     child.father = father;
@@ -33,12 +31,12 @@ export class ChildService {
     return child;
   }
 
-  findAll(): Promise<Child[]> {
-    return this.repository.find();
+  async findAll(): Promise<Child[]> {
+    return await this.repository.find();
   }
 
-  findOne(id: string): Promise<Child> {
-    return this.repository.findOne(id);
+  async findOne(id: string): Promise<Child> {
+    return await this.repository.findOne(id);
   }
 
   async update(id: string, updateChildDto: UpdateChildDto): Promise<Child> {

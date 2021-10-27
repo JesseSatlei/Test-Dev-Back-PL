@@ -10,25 +10,25 @@ export class FatherService {
 
   constructor(@InjectRepository(Father) private readonly repository: Repository<Father>) {}
 
-  create(createFatherDto: CreateFatherDto): Promise <Father> {
+  async create(createFatherDto: CreateFatherDto): Promise <Father> {
     const father = this.repository.create(createFatherDto);
-    return this.repository.save(father);
+    return await this.repository.save(father);
   }
 
-  findAll(): Promise<Father[]> {
-    return this.repository.find();
+  async findAll(): Promise<Father[]> {
+    return await this.repository.find();
   }
 
-  findOne(id: string): Promise<Father> {
-    return this.repository.findOne(id);
+  async findOne(id: string): Promise<Father> {
+    return await this.repository.findOne(id);
   }
 
-  fildAllFathersAndChildrens(): Promise<Father[]> {
-    return this.repository.find({ relations: ['child'] });
+  async fildAllFathersAndChildrens(): Promise<Father[]> {
+    return await this.repository.find({ relations: ['child'] });
   }
 
-  findAllChildrens(id: string): Promise<Father> {
-    return this.repository.findOne(id, {
+  async findAllChildrens(id: string): Promise<Father> {
+    return await this.repository.findOne(id, {
       relations: ['child'] 
     });
   }
