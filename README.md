@@ -102,8 +102,11 @@ Então para a utilização, crie um novo usuario e depois realize a autentifica�
 | http://localhost:3000/child                                | GET          | Resgata todos os animais filhos | Privado |  Sem Json                              | Sem parametro |
 | http://localhost:3000/child/{id_animal_filho}              | GET          | Resgata um animal filho         | Privado |  Sem Json                              | Id do Animal  |
 | http://localhost:3000/child                                | POST         | Cria um novo animal filho       | Privado |  { "name": "pingo", "father_id": 2 }   | Sem parametro |
-| http://localhost:3000/child/{id_animal_filho}              | PATCH        | Atualiza um animal filho        | Privado |  { "name": "valente", "father_id": 2 } | Id do Animal  |
+| http://localhost:3000/child/{id_animal_filho}              | PATCH        | Atualiza um animal filho        | Privado |  { "name": "valente" }                 | Id do Animal  |
 | http://localhost:3000/child/{id_animal_filho}              | DELETE       | Deleta um animal filho          | Privado |  Sem Json                              | Id do Animal  |
+
+
+Dentro da pasta "data" está disponibilizado um JSON com todas as rotas criadas que pode ser importado no Postman.
 
 ### Tarefas utilizadas para criação do Projeto
 * Deverá existir um relacionamento entre Pais e Filhos. (1:N)
